@@ -118,7 +118,7 @@ namespace WindowsFormsApplication1
                     }
             }
             _employeeHasBoss[id] = false;
-            OutputBox.AppendText(string.Format("Add a {0} (ID:{1}, Name:{2}, Salary:{3}).\n", type, id, name, salary));
+            OutputBox.AppendText(string.Format("Add a {0} (ID:{1}, Name:{2}, WorkTime:{3}).\n", type, id, name, salary));
         }
 
         private void AddRelationship(int src, int sink)
@@ -200,16 +200,16 @@ namespace WindowsFormsApplication1
 
         private int GetPrintTreeOffset(Employee employee, int curOffset)
         {
-            int offset = curOffset-4;
+            int offset = curOffset-8;
             if (employee.SubordinateList.Count == 0)
             {
-                offset = (int) (curOffset + Math.Ceiling(employee.Name.Length/2.0));
+                offset = (int) (curOffset + employee.Name.Length);
                 _nodeOffset[employee] = offset;
                 return offset;
             }
             foreach (var next in employee.SubordinateList)
             {
-                offset = GetPrintTreeOffset(next, offset + 4);
+                offset = GetPrintTreeOffset(next, offset + 8);
             }
             offset = (int) Math.Ceiling((offset+curOffset)/2.0 + employee.Name.Length/2.0);
             _nodeOffset[employee] = offset;
@@ -223,32 +223,66 @@ namespace WindowsFormsApplication1
             int preLevel = 1;
             int nextLevel = 0;
             int preWidth = 0;
+            int preBegin = 0;
+            string line1, line2,line3, line4;
+            line1 = line2 = line3 = line4 = "";
             while (q.Count != 0)
             {
                 var e = q.Dequeue();
+                bool hasNext = e.SubordinateList.Any();
                 int width = _nodeOffset[e];
-                string format = "{0," + (width - preWidth).ToString() + "}";
-                OutputBox.AppendText(string.Format(format, e.Name));
-                preLevel--;
-                nextLevel += e.SubordinateList.Count;
-                preWidth = width;
-                if (preLevel == 0)
+                string format = "";
+                
+                for (int i = 0; i < width - preWidth - e.Name.Length; i++)
+                    format += " ";
+                line2 += format + e.Name;
+
+                format = "";
+                for (int i = preBegin; i < width - e.Name.Length; i++)
+                    format += " ";
+                line1 += format + "|";
+                line3 += format + (hasNext ? "|" : " ");
+                if (hasNext)
                 {
-                    OutputBox.AppendText("\n");
-                    preLevel = nextLevel;
-                    nextLevel = 0;
-                    preWidth = 0;
+                    int begin = _nodeOffset[e.SubordinateList.First()]-e.SubordinateList.First().Name.Length;
+                    int end = _nodeOffset[e.SubordinateList.Last()]-e.SubordinateList.Last().Name.Length;
+                    int ii = line4.Length;
+                    for (; ii < begin; ii++)
+                        line4 += " ";
+                    for (; ii <= end; ii++)
+                        line4 += "-";
                 }
                 foreach (var next in e.SubordinateList)
                 {
                     q.Enqueue(next);
                 }
+
+                preLevel--;
+                nextLevel += e.SubordinateList.Count;
+                preWidth = width;
+                preBegin = width - e.Name.Length+1;
+                if (preLevel == 0)
+                {
+                    if (e != head)
+                        OutputBox.AppendText(line1 + "\n");
+                    OutputBox.AppendText(line2 + "\n");
+                    OutputBox.AppendText(line3 + "\n");
+                    OutputBox.AppendText(line4 + "\n");
+
+                    preLevel = nextLevel;
+                    nextLevel = 0;
+                    preWidth = 0;
+                    preBegin = 0;
+                    line1 = line2 = line3 = line4 = "";
+                }
+
             }
+
         }
 
         private void LoadEmployeeMenu_Click(object sender, EventArgs e)
         {
-            var sr = new StreamReader("employee.txt");
+            var sr = new StreamReader(@"C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\employee.txt",Encoding.Default);
             string line;
             while ((line = sr.ReadLine()) != null)
             {
@@ -259,11 +293,12 @@ namespace WindowsFormsApplication1
                 int salary = Convert.ToInt32(subStr[3]);
                 AddEmployee(type, id, name, salary);
             }
+            sr.Close();
         }
 
         private void loadRelationshipToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var sr = new StreamReader("relationship.txt");
+            var sr = new StreamReader(@"C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\relationship.txt", Encoding.Default);
             string line;
             while ((line = sr.ReadLine()) != null)
             {
@@ -272,6 +307,30 @@ namespace WindowsFormsApplication1
                 int sink = Convert.ToInt32(subStr[1]);
                 AddRelationship(src, sink);
             }
+            sr.Close();
         }
+
+        private void Calculator_Click(object sender, EventArgs e)
+        {
+            if (calculatorTypes.GetItemChecked(0))
+            {
+                var c = new TotalOtCalculator();
+                var res = c.Invoke(_employeeDict[_headId]);
+                OutputBox.AppendText(string.Format("Total Overtime on work is {0}\n", res));
+            }
+            if (calculatorTypes.GetItemChecked(1))
+            {
+                var c = new TotalSalaryCalculator();
+                var res = c.Invoke(_employeeDict[_headId]);
+                OutputBox.AppendText(string.Format("Total salary is {0}\n", res));
+            }
+            if (calculatorTypes.GetItemChecked(2))
+            {
+                var c = new ActualSalaryCalculator();
+                var res = c.Invoke(_employeeDict[_headId]);
+                OutputBox.AppendText(string.Format("Actual salary is {0}\n", res));
+            }
+        }
+
     }
 }

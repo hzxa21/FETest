@@ -33,7 +33,6 @@
             this.employeeName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.OutputBox = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.employeeSalary = new System.Windows.Forms.TextBox();
@@ -44,14 +43,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.sinkId = new System.Windows.Forms.TextBox();
             this.addRelationship = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.calculator = new System.Windows.Forms.Button();
+            this.calculatorTypes = new System.Windows.Forms.CheckedListBox();
             this.printTree = new System.Windows.Forms.Button();
-            this.shortestPath = new System.Windows.Forms.Button();
             this.refresh = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loadEmployee = new System.Windows.Forms.ToolStripMenuItem();
             this.loadRelationshipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OutputBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,15 +102,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Name";
             // 
-            // OutputBox
-            // 
-            this.OutputBox.Location = new System.Drawing.Point(15, 206);
-            this.OutputBox.Name = "OutputBox";
-            this.OutputBox.ReadOnly = true;
-            this.OutputBox.Size = new System.Drawing.Size(497, 302);
-            this.OutputBox.TabIndex = 5;
-            this.OutputBox.Text = "";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -126,9 +116,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(16, 120);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Salary";
+            this.label4.Text = "WorkTime";
             // 
             // employeeSalary
             // 
@@ -195,26 +185,27 @@
             this.addRelationship.UseVisualStyleBackColor = true;
             this.addRelationship.Click += new System.EventHandler(this.addRelationship_Click);
             // 
-            // button2
+            // calculator
             // 
-            this.button2.Location = new System.Drawing.Point(499, 155);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(104, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Calculate";
-            this.button2.UseVisualStyleBackColor = true;
+            this.calculator.Location = new System.Drawing.Point(499, 155);
+            this.calculator.Name = "calculator";
+            this.calculator.Size = new System.Drawing.Size(104, 23);
+            this.calculator.TabIndex = 18;
+            this.calculator.Text = "Calculate";
+            this.calculator.UseVisualStyleBackColor = true;
+            this.calculator.Click += new System.EventHandler(this.Calculator_Click);
             // 
-            // checkedListBox1
+            // calculatorTypes
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.calculatorTypes.FormattingEnabled = true;
+            this.calculatorTypes.Items.AddRange(new object[] {
+            "Total Overtime",
             "Total Salary",
-            "Actual Salary",
-            "HR"});
-            this.checkedListBox1.Location = new System.Drawing.Point(499, 38);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 94);
-            this.checkedListBox1.TabIndex = 19;
+            "Actual Salary"});
+            this.calculatorTypes.Location = new System.Drawing.Point(499, 38);
+            this.calculatorTypes.Name = "calculatorTypes";
+            this.calculatorTypes.Size = new System.Drawing.Size(120, 94);
+            this.calculatorTypes.TabIndex = 19;
             // 
             // printTree
             // 
@@ -226,18 +217,9 @@
             this.printTree.UseVisualStyleBackColor = true;
             this.printTree.Click += new System.EventHandler(this.printTree_Click);
             // 
-            // shortestPath
-            // 
-            this.shortestPath.Location = new System.Drawing.Point(525, 247);
-            this.shortestPath.Name = "shortestPath";
-            this.shortestPath.Size = new System.Drawing.Size(91, 23);
-            this.shortestPath.TabIndex = 21;
-            this.shortestPath.Text = "Shortest Path";
-            this.shortestPath.UseVisualStyleBackColor = true;
-            // 
             // refresh
             // 
-            this.refresh.Location = new System.Drawing.Point(525, 288);
+            this.refresh.Location = new System.Drawing.Point(525, 249);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(91, 23);
             this.refresh.TabIndex = 22;
@@ -270,16 +252,26 @@
             this.loadRelationshipToolStripMenuItem.Text = "Load Relationship";
             this.loadRelationshipToolStripMenuItem.Click += new System.EventHandler(this.loadRelationshipToolStripMenuItem_Click);
             // 
+            // OutputBox
+            // 
+            this.OutputBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OutputBox.Location = new System.Drawing.Point(12, 208);
+            this.OutputBox.Multiline = true;
+            this.OutputBox.Name = "OutputBox";
+            this.OutputBox.ReadOnly = true;
+            this.OutputBox.Size = new System.Drawing.Size(487, 300);
+            this.OutputBox.TabIndex = 24;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 520);
+            this.Controls.Add(this.OutputBox);
             this.Controls.Add(this.refresh);
-            this.Controls.Add(this.shortestPath);
             this.Controls.Add(this.printTree);
-            this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.calculatorTypes);
+            this.Controls.Add(this.calculator);
             this.Controls.Add(this.addRelationship);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.sinkId);
@@ -290,7 +282,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.employeeSalary);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.OutputBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.employeeName);
@@ -315,7 +306,6 @@
         private System.Windows.Forms.TextBox employeeName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox OutputBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox employeeSalary;
@@ -326,14 +316,14 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox sinkId;
         private System.Windows.Forms.Button addRelationship;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Button calculator;
+        private System.Windows.Forms.CheckedListBox calculatorTypes;
         private System.Windows.Forms.Button printTree;
-        private System.Windows.Forms.Button shortestPath;
         private System.Windows.Forms.Button refresh;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem loadEmployee;
         private System.Windows.Forms.ToolStripMenuItem loadRelationshipToolStripMenuItem;
+        private System.Windows.Forms.TextBox OutputBox;
     }
 }
 
