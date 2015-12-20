@@ -1,0 +1,12 @@
+0,Director,Head,100
+1,Manager,David,100
+2,Manager,Eric,100
+3,Manager,Frank,100
+4,Senior Manager,Alice,100
+5,Senior Manager,Bob,100
+6,Senior Manager,Calvin,100
+7,Worker,John,100
+8,Worker,Ken,100
+9,Manager,Gary,100
+10,Manager,Hunk,100
+11,Worker,Ivy,100
