@@ -51,6 +51,7 @@
             this.loadEmployee = new System.Windows.Forms.ToolStripMenuItem();
             this.loadRelationshipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OutputBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,7 +121,7 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "WorkTime";
             // 
-            // employeeSalary
+            // employeeWorkTime
             // 
             this.employeeWorkTime.Location = new System.Drawing.Point(105, 117);
             this.employeeWorkTime.Name = "employeeWorkTime";
@@ -262,11 +263,21 @@
             this.OutputBox.Size = new System.Drawing.Size(487, 300);
             this.OutputBox.TabIndex = 24;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(525, 293);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 23);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 520);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.OutputBox);
             this.Controls.Add(this.refresh);
             this.Controls.Add(this.printTree);
@@ -324,6 +335,7 @@
         private System.Windows.Forms.ToolStripMenuItem loadEmployee;
         private System.Windows.Forms.ToolStripMenuItem loadRelationshipToolStripMenuItem;
         private System.Windows.Forms.TextBox OutputBox;
+        private System.Windows.Forms.Button button1;
     }
 }
 
