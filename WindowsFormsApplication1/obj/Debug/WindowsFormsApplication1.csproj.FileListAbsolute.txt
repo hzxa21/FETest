@@ -16,3 +16,12 @@ E:\百度云同步盘\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debu
 E:\百度云同步盘\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 E:\百度云同步盘\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 E:\百度云同步盘\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\v-zhah\Source\Repos\FETest\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
