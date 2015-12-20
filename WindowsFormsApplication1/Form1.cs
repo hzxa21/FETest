@@ -58,9 +58,9 @@ namespace WindowsFormsApplication1
                 OutputBox.AppendText("Please input the name of the employee you want to add.\n");
                 valid = false;
             }
-            if (!employeeSalary.Text.Any())
+            if (!employeeWorkTime.Text.Any())
             {
-                OutputBox.AppendText("Please input the salary of the employee you want to add.\n");
+                OutputBox.AppendText("Please input the work time of the employee you want to add.\n");
                 valid = false;
             }
 
@@ -69,7 +69,7 @@ namespace WindowsFormsApplication1
 
             string name = employeeName.Text;
             int id = Convert.ToInt32(employeeId.Text);
-            int salary = Convert.ToInt32(employeeSalary.Text);
+            int workTime = Convert.ToInt32(employeeWorkTime.Text);
             if (id < 0)
             {
                 OutputBox.AppendText("Id should not less than 0");
@@ -79,10 +79,10 @@ namespace WindowsFormsApplication1
                 OutputBox.AppendText("Id already exists.\n");
                 return;
             }
-            AddEmployee(employeeTypes.SelectedItem.ToString(), id, name, salary);
+            AddEmployee(employeeTypes.SelectedItem.ToString(), id, name, workTime);
         }
 
-        private void AddEmployee(string type, int id, string name, int salary)
+        private void AddEmployee(string type, int id, string name, int workTime)
         {
             switch (type)
             {
@@ -95,30 +95,30 @@ namespace WindowsFormsApplication1
                             OutputBox.AppendText("Only one Director can be added");
                             return;
                         }
-                        _employeeDict.Add(id, new Director(name, salary));
+                        _employeeDict.Add(id, new Director(name, workTime));
                         break;
                     }
                 case "Senior Manager":
                     {
-                        _employeeDict.Add(id, new SeniorManager(name, salary));
+                        _employeeDict.Add(id, new SeniorManager(name, workTime));
                         _employeeHasBoss.Add(id, false);
                         break;
                     }
                 case "Manager":
                     {
-                        _employeeDict.Add(id, new Manager(name, salary));
+                        _employeeDict.Add(id, new Manager(name, workTime));
                         _employeeHasBoss.Add(id, false);
                         break;
                     }
                 case "Worker":
                     {
-                        _employeeDict.Add(id, new Worker(name, salary));
+                        _employeeDict.Add(id, new Worker(name, workTime));
                         _employeeHasBoss.Add(id, false);
                         break;
                     }
             }
             _employeeHasBoss[id] = false;
-            OutputBox.AppendText(string.Format("Add a {0} (ID:{1}, Name:{2}, WorkTime:{3}).\n", type, id, name, salary));
+            OutputBox.AppendText(string.Format("Add a {0} (ID:{1}, Name:{2}, WorkTime:{3}).\n", type, id, name, workTime));
         }
 
         private void AddRelationship(int src, int sink)
@@ -182,12 +182,12 @@ namespace WindowsFormsApplication1
         {
             if (_headId < 0)
             {
-                OutputBox.AppendText("No head found");
+                OutputBox.AppendText("No head found.\n");
                 return;
             }
             else if (_employeeHasBoss.Count(k => k.Value) != _employeeHasBoss.Count - 1)
             {
-                OutputBox.AppendText("The tree is incomplete. All the employees except the Diector should have a boss");
+                OutputBox.AppendText("The tree is incomplete. All the employees except the Diector should have a boss.\n");
                 return;
             }
             var head = _employeeDict[_headId];
@@ -290,8 +290,8 @@ namespace WindowsFormsApplication1
                 int id = Convert.ToInt32(subStr[0]);
                 string type = subStr[1];
                 string name = subStr[2];
-                int salary = Convert.ToInt32(subStr[3]);
-                AddEmployee(type, id, name, salary);
+                int workTime = Convert.ToInt32(subStr[3]);
+                AddEmployee(type, id, name, workTime);
             }
             sr.Close();
         }

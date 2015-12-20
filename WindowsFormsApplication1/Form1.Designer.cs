@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.employeeSalary = new System.Windows.Forms.TextBox();
+            this.employeeWorkTime = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.employeeId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -122,10 +122,10 @@
             // 
             // employeeSalary
             // 
-            this.employeeSalary.Location = new System.Drawing.Point(105, 117);
-            this.employeeSalary.Name = "employeeSalary";
-            this.employeeSalary.Size = new System.Drawing.Size(121, 20);
-            this.employeeSalary.TabIndex = 7;
+            this.employeeWorkTime.Location = new System.Drawing.Point(105, 117);
+            this.employeeWorkTime.Name = "employeeWorkTime";
+            this.employeeWorkTime.Size = new System.Drawing.Size(121, 20);
+            this.employeeWorkTime.TabIndex = 7;
             // 
             // label5
             // 
@@ -280,7 +280,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.employeeId);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.employeeSalary);
+            this.Controls.Add(this.employeeWorkTime);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -290,7 +290,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Simple Organization";
+            this.Text = "Simple Organization By [Your Name]";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -308,7 +308,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox employeeSalary;
+        private System.Windows.Forms.TextBox employeeWorkTime;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox employeeId;
         private System.Windows.Forms.Label label6;
